@@ -30,6 +30,7 @@ export default () => {
       lastName: lastName.value,
     },
   });
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (action === "logIn") {
@@ -50,17 +51,17 @@ export default () => {
         toast.error("All field are required");
       }
     }
-
-    return (
-      <AuthPresenter
-        setAction={setAction}
-        action={action}
-        username={username}
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        onSubmit={onSubmit}
-      />
-    );
   };
+
+  return (
+    <AuthPresenter
+      setAction={setAction}
+      action={action}
+      username={username}
+      firstName={firstName}
+      lastName={lastName}
+      email={email}
+      onSubmit={onSubmit}
+    />
+  );
 };
