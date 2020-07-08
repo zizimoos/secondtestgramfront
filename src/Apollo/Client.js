@@ -1,10 +1,19 @@
-import ApolloClient from "apollo-boost";
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { HttpLink } from "apollo-link-http";
 import { defaults, resolvers } from "./LocalState";
 
-export default new ApolloClient({
+const cache = new InMemoryCache();
+const link = new HttpLink({
   uri: "http://localhost:4000",
-  clientState: {
-    defaults,
-    resolvers,
-  },
+});
+
+export default new ApolloClient({
+  cache,
+  link,
+  resolvers,
+});
+
+cache.writeData({
+  data: defaults,
 });
