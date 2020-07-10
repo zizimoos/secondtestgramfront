@@ -57,7 +57,12 @@ const PostContainer = ({
         const {
           data: { addComment },
         } = await addCommentMutation();
-        setSelfComments([...selfComments, addComment]);
+
+        if (comment.value === "") {
+          toast.error("comment is empty");
+        } else {
+          setSelfComments([...selfComments, addComment]);
+        }
         comment.setValue("");
       } catch {
         toast.error("Cant send comment");
