@@ -17,11 +17,7 @@ const LoggedInRoutes = () => (
 );
 const LoggedOutRoutes = () => (
   <Switch>
-    {/* <Route exact path="/" component={Auth}></Route> */}
-    <Route exact path="/" component={Feed}></Route>
-    <Route path="/explore" component={Explore} />
-    <Route path="/search" component={Search} />
-    <Route path="/:username" component={Profile} />
+    <Route exact path="/" component={Auth}></Route>
   </Switch>
 );
 

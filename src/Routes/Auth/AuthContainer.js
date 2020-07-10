@@ -30,13 +30,14 @@ export default () => {
     },
   });
 
-  const confirmSecretMutation = useMutation(CONFIRM_SECRET, {
+  const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
     variables: {
       email: email.value,
       secret: secret.value,
     },
   });
-  const localLogInMutation = useMutation(LOCAL_LOG_IN);
+
+  const [localLogInMutation] = useMutation(LOCAL_LOG_IN);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ export default () => {
           const {
             data: { requestSecret },
           } = await requestSecretMutation();
-          console.log(requestSecret);
+          console.log("requestSecret", requestSecret);
           if (!requestSecret) {
             toast.error("You dont have an account yet, create one");
             setTimeout(() => setAction("signUp"), 3000);
@@ -86,9 +87,11 @@ export default () => {
     } else if (action === "confirm") {
       if (secret.value !== "") {
         try {
+          console.log("try........");
           const {
             data: { confirmSecret: token },
           } = await confirmSecretMutation();
+          console.log("token", token);
           if (token !== "" && token !== undefined) {
             localLogInMutation({ variables: { token } });
           } else {
