@@ -64,7 +64,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
               <SquarePost
                 likeCount={post.likeCount}
                 commentCount={post.commentCount}
-                file={post.files[0]}
+                file={post.files[1] ? post.files[1] : post.files[0]}
               />
             ))
           )}
