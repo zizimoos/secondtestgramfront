@@ -49,7 +49,7 @@ export default () => {
   return (
     <Wrapper>
       <Helmet>
-        <title>Feed | Prismagram</title>
+        <title>Feed | MIKKIKING</title>
       </Helmet>
       {loading && <Loader />}
       {!loading &&
